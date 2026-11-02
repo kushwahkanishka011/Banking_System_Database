@@ -1,0 +1,3 @@
+CREATE DATABASE BANKING_SYSTEMB;-- CREATED DATABASE
+USE BANKING_SYSTEMB; -- Accessed the database
+SHOW DATABASES; -- View the tables in database 
