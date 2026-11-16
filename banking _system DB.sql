@@ -212,6 +212,94 @@ WHERE TRANSACTIONID IN (5006,5007); -- UPDATED MULTIPLE RECORDS
 
 -- EXTRACING THE DATA
 
+SELECT FIRSTNAME ,EMAIL ,CUSTOMERID
+FROM CUSTOMERS;
+
+SELECT*
+FROM CUSTOMERS
+WHERE CUSTOMERID = 105; -- CALLING SPECIFIC DATA
+
+SELECT*
+FROM CUSTOMERS
+WHERE CUSTOMERID = 102 OR CUSTOMERID = 104; -- CALLING MULTIPLE ID'S
+
+SELECT* -- CALLING DATA IN RANGE
+FROM CUSTOMERS
+WHERE BIRTHDATE >= '1995-01-01' AND BIRTHDATE <= '2000-12-31';
+-- Customer Analysis
+
+-- How many customers are there?
+
+SELECT COUNT(*) AS Total_Customers -- Column Alises
+FROM CUSTOMERS;
+
+-- Which customers have missing information?
+
+SELECT CUSTOMERID, FIRSTNAME AS NAME
+FROM CUSTOMERS
+WHERE LASTNAME IS NULL OR EMAIL IS NULL;
+
+-- Who are the youngest/oldest cstomers?
+
+SELECT
+MAX(BIRTHDATE) AS YOUNGEST_CUSTOMER,
+MIN(BIRTHDATE) AS OLDEST_CUSTOMER
+FROM CUSTOMERS;
+-- How many customers were born before/after a particular year?
+
+-- Before 2000
+
+SELECT *
+FROM CUSTOMERS
+WHERE YEAR(BIRTHDATE) <= 2000;
+
+-- After 2000
+
+SELECT *
+FROM CUSTOMERS
+WHERE YEAR(BIRTHDATE) >= 2000;
+
+-- Which customers have multiple accounts?
+SELECT CUSTOMERID, COUNT(*) AS TOTAL_ACCOUNTS
+FROM ACCOUNTs
+GROUP BY CUSTOMERID
+HAVING Total_Accounts > 1;
+
+-- How many Savings, current and salary accounts exict?
+
+SELECT ACCOUNTTYPE,COUNT(*) AS Total_Accounts
+FROM ACCOUNTS
+GROUP BY ACCOUNTTYPE;
+
+-- What is the total balance?
+
+SELECT SUM(balance) AS Total_Balance
+FROM ACCOUNTS;
+
+-- What is the average account balance?
+SELECT AVG(balance) AS Total_balance
+FROM ACCOUNTS;
+-- Which customers have the highest balances?
+SELECT CUSTOMERID, BALANCE Highest_Balance
+FROM ACCOUNTS
+ORDER BY BALANCE DESC LIMIT 1;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
